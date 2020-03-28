@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+.App {
+  text-align: center;
+  display: flex;
+  background: rgb(214, 242, 252);
+  width: 100%;
+  background: linear-gradient(10deg, rgba(99,140,249,1) 0%, rgba(51,89,214,1) 37%, rgba(24,52,149,1) 66%, rgba(8,47,117,1) 100%);  
+  overflow-x: hidden;
+
+
+}
+html{
+  overflow-x: hidden;
+}
+.sideNav-div{
+  height: 100vh;
+  background: red;
+  min-width: 200px;
+}
+
+.paper{
+  width: 55%;
+  min-width: 300px;
+  margin: 20px;
+  height: 50%;
+  background: #f7f7fa;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+}
+
+.paper-title{
+  color: rgb(66, 66, 66);
+  font-size: 20px;
+  margin: 10px;
+}
+
+.paper-fileupload{
+  width:100%;
+  height: 100%;
+}
+
+.sideNav{
+  height: 100%;
+}
+
+.content-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+}
+
+.landing-page{
+  background: linear-gradient(10deg, rgba(99,140,249,1) 0%, rgba(51,89,214,1) 37%, rgba(24,52,149,1) 66%, rgba(8,47,117,1) 100%);  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 78px;
+  text-align: center;
+  
+  color: #FFFFFF;
+  
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.landing-text{
+  padding-top: 250px;
+
+}
+
+.title-nav{
+  width: 100%;
+  background: red;
+}
+.curve-div{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.shadow {
+  -webkit-filter: drop-shadow( 0px 0px 5px rgba(24, 24, 24, 0.7));
+  filter: drop-shadow( 0px 0px 5px rgba(24, 24, 24, 0.7));
+  /* Similar syntax to box-shadow */
+}
+
+.file-upload-text{
+  margin-left: 10px;
+}
+.upload-button{
+  background: red;
+}
+
+.text-anim{
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.text-anim:first-of-type {
+animation: showup 10s infinite;
+}
+
+.text-anim:last-of-type {
+width:0px;
+animation: reveal 10s infinite;
+}
+
+.text-anim:last-of-type span {
+margin-left:-300px;
+animation: slidein 10s infinite;
+}
+
+@keyframes showup {
+0% {opacity:0;}
+10% {opacity:1;}
+80% {opacity:1;}
+100% {opacity:0;}
+}
+
+@keyframes slidein {
+0% { margin-left:-800px; }
+10% { margin-left:-800px; }
+35% { margin-left:0px; }
+100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+0% {opacity:0;width:0px;}
+10% {opacity:1;width:0px;}
+20% {width:300px;}
+80% {opacity:1;}
+100% {opacity:0;width:300px;}
+}
+
+
