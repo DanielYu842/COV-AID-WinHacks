@@ -33,10 +33,24 @@ class Dashboard extends React.Component{
         }, false);
     }
     
-    submit(){
+    async submit(){
         var file = document.getElementById('file-button').files[0]
         console.log(file)
+
+        const data = new FormData() 
+
+        data.append('file', file)
+
+        const url = "http://localhost:3000/something"
+
+        var response = await fetch(url, {
+                method: 'POST',
+                body: data
+        })
+
     }
+
+    
     render(){
         return(
             <div className="paper" >
