@@ -35,8 +35,8 @@ class Dashboard extends React.Component{
     
     async submit(){
         var file = document.getElementById('file-button').files[0]
-        console.log(file)
-
+        console.log(file.mozFullPath)
+        console.log(document.getElementById('file-button').value)
         const data = new FormData() 
 
         data.append('file', file)
@@ -50,7 +50,7 @@ class Dashboard extends React.Component{
 
     }
 
-    
+
     render(){
         return(
             <div className="paper" >
