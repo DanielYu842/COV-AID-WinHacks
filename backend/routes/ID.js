@@ -81,10 +81,30 @@ function extractInfo(list) {
     return [name, cardNumber, birthday, issueDate, expiryDate];
 }
 
-function isInteger(value) {
-    if (parseInt(value, 10).toString() === value) {
-        return true
-    }
-    return false;
-}
+// function isInteger(value) {
+//     if (parseInt(value, 10).toString() === value) {
+//         return true
+//     }
+//     return false;
+// }
 
+
+router.get('/status', (req, res) => {
+    const { doneList } = req.query;
+    console.log(doneList);
+    ID.findOne({ _id: { $nin: JSON.parse(doneList) } })
+      .then(ID => res.send(ID))
+      .catch(err => res.status(500).send(err));
+});
+
+router.get('/:id', (req, res) => {
+    ID.findOne({ _id: req.params.id })
+        .then(id => res.send(id))
+        .catch(err => res.status(500).send(err))
+});
+
+router.get('/', (req, res) => {
+    ID.find()
+        .then(IDs => res.send(IDs))
+        .catch(err => res.status(500).send(err));
+});     
