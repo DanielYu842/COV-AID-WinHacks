@@ -1,10 +1,8 @@
 import React from 'react';
 import {Button} from '@material-ui/core/';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import UploadContainer from '../containers/UploadContainer';
 import "./Dashboard.css"
-
-
-
 
 class Dashboard extends React.Component{
     constructor(){
@@ -41,6 +39,9 @@ class Dashboard extends React.Component{
         return(
             <div className="paper" >
                 <div className="paper-title">Upload Government Issued ID</div>
+
+                < UploadContainer />
+
                 <div className="input-files">
                    {this.state.files.map(file => <div className="file-disp"><div className="file-name">{file}</div><div className="filler-dashboardd"/> <div style={{margin: "10px"}} className="close-file" onClick={() => this.close()}>X</div></div>)}   
                 </div>
