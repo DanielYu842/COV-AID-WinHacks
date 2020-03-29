@@ -139,7 +139,7 @@ class App extends Component {
   //const web3 = require(web3);
   const web3 = await getWeb3();
 
-  const abi = [
+  const abi =[
       {
         "payable": true,
         "stateMutability": "payable",
