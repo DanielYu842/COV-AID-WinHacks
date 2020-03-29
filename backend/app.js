@@ -14,7 +14,6 @@ var IDRouter = require('./routes/ID');
 
 var app = express();
 
-const uri = "mongodb+srv://Markos_Polo:aGitviSo3QyQ7Bw@winhacks-axqos.gcp.mongodb.net/test?retryWrites=true&w=majority"
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
