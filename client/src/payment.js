@@ -1,7 +1,13 @@
-import web3 from './web3';
+const web3 = require('web3')
 
-const address = '0xA6B998fe9f57310f015870058e4DA020e981c023'; //change this shit according to deployment
-
-
-   
-export default new web3.eth.Contract(abi, address);
+function mainEnter() {
+    web3.eth.getAccounts(function(error, result) {
+    web3.eth.sendTransaction(
+        {from:"0xC63de0aA5d8d23998C4D6108F612FE7B03C910a5",
+        to:web3.eth.accounts[0],
+        value:  "11000000000000000000", 
+            }, function(err, transactionHash) {
+      if (!err)
+        console.log(transactionHash + " success"); 
+    });
+});
