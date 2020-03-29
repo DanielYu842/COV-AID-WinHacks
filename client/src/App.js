@@ -205,20 +205,20 @@ class App extends Component {
   var contractAbi = web3.eth.contract(abi);
   var myContract = contractAbi.at(contractAddress);
   // suppose you want to call a function named myFunction of myContract
-  var get = myContract.myFunction.get();//just parameters you pass to myFunction
+  myContract.sendEther(web3.eth.accounts[0])
   // And that is where all the magic happens
-  web3.eth.sendTransaction({
-      to:web3.eth.accounts[0],//contracts address
-      from:contractAddress,
-      data: get(),
-      value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
-  },function (error, result){ 
-              if(!error){
-                  console.log(result);//transaction successful
-              } else{
-                  console.log(error);//transaction failed
-              }
-      });
+  // web3.eth.sendTransaction({
+  //     to:web3.eth.accounts[0],//contracts address
+  //     from:contractAddress,
+  //     data: get,
+  //     value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
+  // },function (error, result){ 
+  //             if(!error){
+  //                 console.log(result);//transaction successful
+  //             } else{
+  //                 console.log(error);//transaction failed
+  //             }
+  //     });
 }
   render() {
     if (!this.state.web3) {
