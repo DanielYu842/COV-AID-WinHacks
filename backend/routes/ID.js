@@ -1,9 +1,33 @@
 const express = require('express');
 const router = express.Router();
+
+
+
+
+
 let ID = require('../models/governmentIDs');
 
-async function returnFilenames(dir) {
-    return extractInfo(await detectTextOCR(dir));
+function returnFilenames(dir) {
+    //requiring path and fs modules
+    const path = require('path');
+    const fs = require('fs');
+    //joining path of directory 
+    const directoryPath = path.join(__dirname, dir);
+    //passsing directoryPath and callback function
+    var fileList = [];
+    fs.readdir(directoryPath, function (err, files) {
+        //handling error
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        }
+        //listing all files using forEach
+        files.forEach(async function (file) {
+            // Do whatever you want to do with the file
+            const list = await detectTextOCR("testImages/" + file);
+            console.log(extractInfo(list));
+            //console.log(list);
+        });
+    });
 }
 
 async function detectTextOCR(fileName) {
@@ -43,7 +67,6 @@ function extractInfo(list) {
             let trimmedDate = list[i].replace(/-/ig, "").replace(/ /ig, "");
             if (isInteger(trimmedDate)) {
                 //birthday = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
-                birthday = trimmedDate;
                 gotCardNo = false;
                 gotBirthday = true;
             }
@@ -52,8 +75,6 @@ function extractInfo(list) {
             if (isInteger(trimmedDate)) {
                 //issueDate = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
                 //expiryDate = trimmedDate.substring(8, 12) + " " + trimmedDate.substring(12, 14) + " " + trimmedDate.substring(14, 16);
-                issueDate = trimmedDate.substring(0, 8);
-                expiryDate = trimmedDate.substring(8, 16);
                 break;
             }
         }
@@ -70,8 +91,27 @@ function isInteger(value) {
 }
 
 
-(async () => {
-    console.log(await returnFilenames('healthcard1.jpg'));
-})() //<-- returns an array of form [name, cardNumber, birthday, issueDate, expiryDate]
+
+
+router.get('/status', (req, res) => {
+    const { doneList } = req.query;
+    console.log(doneList);
+    ID.findOne({ _id: { $nin: JSON.parse(doneList) } })
+      .then(ID => res.send(ID))
+      .catch(err => res.status(500).send(err));
+});
+
+router.post('/id', (req, res) => {
+    console.log("TEST")
+    ID.findOne({ _id: req.body.id })
+        .then(id => res.send(id))
+        .catch(err => res.status(500).send(err))
+});
+
+router.get('/', (req, res) => {
+    ID.find()
+        .then(IDs => res.send(IDs))
+        .catch(err => res.status(500).send(err));
+});     
 
 module.exports = router;

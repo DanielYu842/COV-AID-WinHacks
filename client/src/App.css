@@ -13,9 +13,28 @@ html{
   overflow-x: hidden;
 }
 .sideNav-div{
-  height: 100vh;
+  height: 90vh;
   background: red;
   min-width: 200px;
+}
+.button-valid{
+  padding: 10px;
+  background: red;
+}
+.logo-div{
+  height: 20vh;
+  background: #f7f7fa;
+}
+.button-valid-div{
+  width: 100%;
+  background: #f7f7fa;
+  height: 10vh;
+}
+
+.receievePayment{
+  padding-top: 5px;
+  padding-bottom: 5px;
+
 }
 
 .paper{
@@ -50,6 +69,7 @@ html{
   justify-content: space-evenly;
   align-items: center;
   flex: 1;
+  height: 100vh;
 }
 
 .landing-page{

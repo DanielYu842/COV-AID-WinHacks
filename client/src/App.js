@@ -4,7 +4,8 @@ import getWeb3 from "./getWeb3";
 
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
-import Paper from '@material-ui/core/Paper';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import {Button} from '@material-ui/core/';
 
 import {
   BrowserRouter as Router,
@@ -146,6 +147,9 @@ class App extends Component {
       <div className="App">
         <Router>          
           <div className="sideNav-div">
+            <div className="logo-div">
+              <img src="client\src\covaid.png" alt="Smiley face" height="42" width="42"/>
+            </div>
               <Sidenav
               activeKey={this.state.activeKey}
               onSelect={this.handleSelect}
@@ -172,6 +176,17 @@ class App extends Component {
                   </Nav>
                 </Sidenav.Body>
               </Sidenav>
+              <div className="button-valid-div">
+                <Button
+                    variant="contained"
+                    component="label"
+                    color="primary"
+                    className="upload-button"
+                    onClick={() => this.testing()}
+                    >
+                      <div className="receievePayment">Receive Payment</div>
+                </Button>
+              </div>
 
           </div>
           <div className="content-div">
@@ -186,7 +201,6 @@ class App extends Component {
                   <Dashboard></Dashboard>
                 </Route>
               </Switch>
-              <button onClick={() => this.testing()}>MARKOS CLICK HERE</button>
           </div>
         </Router>
 

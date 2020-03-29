@@ -20,7 +20,7 @@ app.post("/test", async (req,res) => {
     const result = await returnFilenames(req.body.title)
     .catch(err => console.log(err))
     console.log(result)
-    res.send("hi")
+    res.send(result)
 })
 
 
