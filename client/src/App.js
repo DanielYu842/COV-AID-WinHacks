@@ -9,6 +9,8 @@ import {Button} from '@material-ui/core/';
 import logo from './covaid.png';
 import Profile from './Pages/Profile.js'
 
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -170,6 +172,7 @@ class App extends Component {
           <div className="sideNav-div">
             <div className="logo-div">
               <img src={logo} alt="Smiley face" height="100" width="100"/>
+              <div className="title-div">COV-AID</div>
             </div>
               <Sidenav
               activeKey={this.state.activeKey}

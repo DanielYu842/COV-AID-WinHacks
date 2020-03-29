@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 .App {
   text-align: center;
   display: flex;
@@ -9,11 +11,15 @@
 
 
 }
+
+#upload-button{
+  margin-bottom: 20px;
+}
 html{
   overflow-x: hidden;
 }
 .sideNav-div{
-  height: 70vh;
+  height: 65vh;
   background: red;
   min-width: 200px;
 }
@@ -22,10 +28,18 @@ html{
   background: red;
 }
 .logo-div{
-  height: 20vh;
+  height: 25vh;
   background: #f7f7fa;
+  display: flex;
+  flex-direction: column;
 }
 
+.title-div{
+  font-size: 20px;
+  margin-top: 2vh;
+  font-family: 'Raleway', sans-serif;
+
+}
 .logout{
   position: absolute;
   top:0px;
