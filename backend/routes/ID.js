@@ -86,11 +86,7 @@ function isInteger(value) {
     return false;
 }
 
-router.get("/ocr", (req,res) => {
-    const filepath = req.body.fileName
-    res.send(returnFilenames(filepath))
-    
-})
+
 
 
 router.get('/status', (req, res) => {
