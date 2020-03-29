@@ -18,6 +18,7 @@ contract SimpleStorage {
     //we need to do the algo for amount
   }
 
-  function () public payable {
-}
+  function () external payable {
+
+  }
 }
