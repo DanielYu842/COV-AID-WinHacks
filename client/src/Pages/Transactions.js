@@ -5,7 +5,8 @@ class Transactions extends React.Component{
         return(
             <div className="paper" >
                 <div className="paper-title">Transactions</div>
-                <div>Accessible through metamask on the blockchain</div>
+                <div                   style={{marginTop: "15%", fontSize: "20px"}}     
+>Accessible through metamask on the blockchain</div>
             </div>
         )
     }

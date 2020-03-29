@@ -8,7 +8,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {Button} from '@material-ui/core/';
 import logo from './covaid.png';
 import Profile from './Pages/Profile.js'
-
+import Transactions from './Pages/Transactions'
 
 
 import {
@@ -94,18 +94,18 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+  // runExample = async () => {
+  //   const { accounts, contract } = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+  //   // Stores a given value, 5 by default.
+  //   await contract.methods.set(5).send({ from: accounts[0] });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+  //   // Get the value from the contract to prove it worked.
+  //   const response = await contract.methods.get().call();
 
-    // Update state with the result.
-    this.setState({ storageValue: response });
-  };
+  //   // Update state with the result.
+  //   this.setState({ storageValue: response });
+  // };
   async testing(){
     
       // Set web3, accounts, and contract to the state, and then proceed with an
@@ -296,7 +296,7 @@ class App extends Component {
                     component="label"
                     color="primary"
                     className="upload-button"
-                    onClick={() => this.runExample()}
+                    onClick={() => this.testing()}
                     >
                       <div className="receievePayment">Receive Payment</div>
                 </Button>
@@ -312,7 +312,7 @@ class App extends Component {
                   className="logout-button"     
                   backgroundColor="red"             
                   >
-                    <div className="receievePayment">Logout MetaMask</div>
+                    <div className="receievePayment">Logout</div>
                 </Button>
               </div>
               <Switch>
@@ -324,6 +324,9 @@ class App extends Component {
                 </Route>
                 <Route exact path="/profile">
                   <Profile></Profile>
+                </Route>
+                <Route exact path="/transactions">
+                  <Transactions></Transactions>
                 </Route>
                 <Route exact path="/">
                   <Dashboard></Dashboard>
