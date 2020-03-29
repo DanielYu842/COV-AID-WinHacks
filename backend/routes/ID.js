@@ -43,7 +43,7 @@ function extractInfo(list) {
             let trimmedDate = list[i].replace(/-/ig, "").replace(/ /ig, "");
             if (isInteger(trimmedDate)) {
                 //birthday = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
-                birthday = parseInt(trimmedDate, 10);
+                birthday = trimmedDate;
                 gotCardNo = false;
                 gotBirthday = true;
             }
@@ -52,8 +52,8 @@ function extractInfo(list) {
             if (isInteger(trimmedDate)) {
                 //issueDate = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
                 //expiryDate = trimmedDate.substring(8, 12) + " " + trimmedDate.substring(12, 14) + " " + trimmedDate.substring(14, 16);
-                issueDate = parseInt(trimmedDate.substring(0, 8), 10);
-                expiryDate = parseInt(trimmedDate.substring(8, 16), 10);
+                issueDate = trimmedDate.substring(0, 8);
+                expiryDate = trimmedDate.substring(8, 16);
                 break;
             }
         }
