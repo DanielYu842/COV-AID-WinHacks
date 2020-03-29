@@ -23,6 +23,13 @@ app.post("/test", async (req,res) => {
     res.send(result)
 })
 
+app.post("/1", async (req,res) => {
+    // console.log(req.body)
+    // const result = await returnFilenames(req.body.title)
+    // .catch(err => console.log(err))
+    // console.log(result)
+    res.send({governmentId: true, healthcare: true, employment: true})
+})
 
 
 

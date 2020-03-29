@@ -12,8 +12,38 @@
 
 }
 
+.profile-content-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+.title-profile{
+  width: 100%;
+  font-size: 25px;
+  display: flex;
+  margin-left: 40px;
+  margin-top :30px;
+}
 #upload-button{
   margin-bottom: 20px;
+}
+
+.profile-details{
+  width: 100%;
+  display: flex;
+  margin-left: 60px;
+  font-size: 18px;
+}
+
+.profile-details-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+  height: 100%;
 }
 html{
   overflow-x: hidden;
@@ -21,7 +51,7 @@ html{
 .sideNav-div{
   height: 65vh;
   background: red;
-  min-width: 200px;
+  min-width: 210px;
 }
 .button-valid{
   padding: 10px;
