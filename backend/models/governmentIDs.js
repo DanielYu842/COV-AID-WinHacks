@@ -10,6 +10,6 @@ const IDSchema = new Schema({
     expiryDate: Number
 });
 
-const ID = mongoose.model('ID', articleSchema);
+const ID = mongoose.model('ID', IDSchema);
 
 module.exports = ID;
