@@ -21,4 +21,7 @@ contract SimpleStorage {
   function () external payable {
 
   }
+
+  function setGoStraight() public {
+    }
 }
