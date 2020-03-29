@@ -11,6 +11,8 @@ import Profile from './Pages/Profile.js'
 import Transactions from './Pages/Transactions'
 import Tick from './tick.png'
 
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -108,29 +110,117 @@ class App extends Component {
   // };
   async testing(){
     
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      const web3 = await getWeb3();
-      const accounts = await web3.eth.getAccounts();
+      // // Set web3, accounts, and contract to the state, and then proceed with an
+      // // example of interacting with the contract's methods.
+      // const web3 = await getWeb3();
+      // const accounts = await web3.eth.getAccounts();
     
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
-      var receiver = "0xC63de0aA5d8d23998C4D6108F612FE7B03C910a5";  
-      var sender = web3.eth.accounts[0];
-      web3.eth.getAccounts(function(error, accounts) {
-        if(error) {
-          console.log(error);
-        }
+      // // Get the contract instance.
+      // const networkId = await web3.eth.net.getId();
+      // const deployedNetwork = SimpleStorageContract.networks[networkId];
+      // const instance = new web3.eth.Contract(
+      //   SimpleStorageContract.abi,
+      //   deployedNetwork && deployedNetwork.address,
+      // );
+      // var receiver = "0xC63de0aA5d8d23998C4D6108F612FE7B03C910a5";  
+      // var sender = web3.eth.accounts[0];
+      // web3.eth.getAccounts(function(error, accounts) {
+      //   if(error) {
+      //     console.log(error);
+      //   }
         
-        web3.eth.getBalance(accounts[0]).then(function(result){
-         console.log( "Balance : " ,web3.utils.fromWei(result, 'ether'));
-        });
-       });
+      //   web3.eth.getBalance(accounts[0]).then(function(result){
+      //    console.log( "Balance : " ,web3.utils.fromWei(result, 'ether'));
+      //   });
+      //  });
+
+
+
+  //const web3 = require(web3);
+  const web3 = await getWeb3();
+
+  const abi = [
+      {
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "fallback"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "x",
+            "type": "uint256"
+          }
+        ],
+        "name": "set",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "get",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "internalType": "address payable",
+            "name": "recipient",
+            "type": "address"
+          }
+        ],
+        "name": "sendEther",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "setGoStraight",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ]
+  const EtherAmount = 11;
+  
+  var contractAddress = "0x6bE9c67E437F09BD584C188Bfd6a91890ED09fb9";
+  
+  var contractAbi = web3.eth.contract(abi);
+  var myContract = contractAbi.at(contractAddress);
+  // suppose you want to call a function named myFunction of myContract
+  var get = myContract.myFunction.get();//just parameters you pass to myFunction
+  // And that is where all the magic happens
+  web3.eth.sendTransaction({
+      to:web3.eth.accounts[0],//contracts address
+      from:contractAddress,
+      data: get(),
+      value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
+  },function (error, result){ 
+              if(!error){
+                  console.log(result);//transaction successful
+              } else{
+                  console.log(error);//transaction failed
+              }
+      });
 }
   render() {
     if (!this.state.web3) {

@@ -63,22 +63,22 @@ const abi = [
   ]
 const EtherAmount = 11;
 
-  var contractAddress = "0x6bE9c67E437F09BD584C188Bfd6a91890ED09fb9";
-  
-  var contractAbi = eth.contract(abi);
-  var myContract = contractAbi.at(contractAddress);
-  // suppose you want to call a function named myFunction of myContract
-  var get = myContract.myFunction.get();//just parameters you pass to myFunction
-  // And that is where all the magic happens
-  web3.eth.sendTransaction({
-      to:web3.eth.accounts[0],//contracts address
-      from:contractAddress,
-      data: getData,
-      value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
-  },function (error, result){ 
-              if(!error){
-                  console.log(result);//transaction successful
-              } else{
-                  console.log(error);//transaction failed
-              }
-      });
+var contractAddress = "0x6bE9c67E437F09BD584C188Bfd6a91890ED09fb9";
+
+var contractAbi = eth.contract(abi);
+var myContract = contractAbi.at(contractAddress);
+// suppose you want to call a function named myFunction of myContract
+var get = myContract.myFunction.get();//just parameters you pass to myFunction
+// And that is where all the magic happens
+web3.eth.sendTransaction({
+    to:web3.eth.accounts[0],//contracts address
+    from:contractAddress,
+    data: getData,
+    value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
+},function (error, result){ 
+            if(!error){
+                console.log(result);//transaction successful
+            } else{
+                console.log(error);//transaction failed
+            }
+    });
