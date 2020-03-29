@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
-
+import Web3 from 'web3';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import Paper from '@material-ui/core/Paper';
@@ -102,8 +102,18 @@ class App extends Component {
   //   this.setState({ storageValue: response });
   // };
   async testing(){
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum)
+        await window.ethereum.enable()
+      }
+      else if (window.web3) {
+        window.web3 = new Web3(window.web3.currentProvider)
+      }
+      else {
+        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      }
     
-      const web3 = await getWeb3();
+      /*const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
     
       // Get the contract instance.
@@ -123,7 +133,7 @@ class App extends Component {
         web3.eth.getBalance(accounts[0]).then(function(result){
          console.log( "Balance : " ,web3.utils.fromWei(result, 'ether'));
         });
-       });
+       });*/
 }
   render() {
     if (!this.state.web3) {
