@@ -273,16 +273,21 @@ class App extends Component {
                         Profile
                       </Nav.Item>
                     </Link>
-                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
-                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.id ? "check" : "close"}></Icon>}>Government ID</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.health ? "check" : "close"}></Icon>}>Health</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.employment ? "check" : "close"}></Icon>}>Employment</Dropdown.Item>
-                    </Dropdown>
+                    <Link to="/transactions" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
+                        Transactions
+                      </Nav.Item>
+                    </Link>
                     <Link to="/information" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="book2" />}>
                         Information
                       </Nav.Item>
                     </Link>
+                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
+                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Government ID</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" > <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Health</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" > <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Employment</Dropdown.Item>
+                    </Dropdown>
 
                   </Nav>
                 </Sidenav.Body>
