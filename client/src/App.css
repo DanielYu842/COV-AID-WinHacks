@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 .App {
   text-align: center;
   display: flex;
@@ -9,13 +11,65 @@
 
 
 }
+
+#upload-button{
+  margin-bottom: 20px;
+}
 html{
   overflow-x: hidden;
 }
 .sideNav-div{
-  height: 100vh;
+  height: 65vh;
   background: red;
   min-width: 200px;
+}
+.button-valid{
+  padding: 10px;
+  background: red;
+}
+.logo-div{
+  height: 25vh;
+  background: #f7f7fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-div{
+  font-size: 20px;
+  margin-top: 2vh;
+  font-family: 'Raleway', sans-serif;
+
+}
+.logout{
+  position: absolute;
+  top:0px;
+  right: 0px;
+  margin: 20px;
+}
+
+.logout-button{
+  color: green;
+}
+
+img{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 50px;
+}
+.button-valid-div{
+  width: 100%;
+  background: #f7f7fa;
+  height: 10vh;
+}
+
+.receievePayment{
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+.logo-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .paper{
@@ -50,6 +104,7 @@ html{
   justify-content: space-evenly;
   align-items: center;
   flex: 1;
+  height: 100vh;
 }
 
 .landing-page{

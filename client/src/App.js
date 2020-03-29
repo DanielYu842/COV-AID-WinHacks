@@ -4,7 +4,12 @@ import getWeb3 from "./getWeb3";
 import Web3 from 'web3';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
-import Paper from '@material-ui/core/Paper';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import {Button} from '@material-ui/core/';
+import logo from './covaid.png';
+import Profile from './Pages/Profile.js'
+
+
 
 import {
   BrowserRouter as Router,
@@ -157,6 +162,10 @@ class App extends Component {
       <div className="App">
         <Router>          
           <div className="sideNav-div">
+            <div className="logo-div">
+              <img src={logo} alt="Smiley face" height="100" width="100"/>
+              <div className="title-div">COV-AID</div>
+            </div>
               <Sidenav
               activeKey={this.state.activeKey}
               onSelect={this.handleSelect}
@@ -167,6 +176,11 @@ class App extends Component {
                     <Link to="/dashboard" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="1" icon={<Icon icon="dashboard" />}>
                         Dashboard
+                      </Nav.Item>
+                    </Link>
+                    <Link to="/profile" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="user" />}>
+                        Profile
                       </Nav.Item>
                     </Link>
                     <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
@@ -183,9 +197,31 @@ class App extends Component {
                   </Nav>
                 </Sidenav.Body>
               </Sidenav>
+              <div className="button-valid-div">
+                <Button
+                    variant="contained"
+                    component="label"
+                    color="primary"
+                    className="upload-button"
+                    onClick={() => this.testing()}
+                    >
+                      <div className="receievePayment">Receive Payment</div>
+                </Button>
+              </div>
 
           </div>
           <div className="content-div">
+              <div className="logout">
+                <Button
+                  variant="contained"
+                  component="label"
+                  color="primary"
+                  className="logout-button"     
+                  backgroundColor="red"             
+                  >
+                    <div className="receievePayment">Logout MetaMask</div>
+                </Button>
+              </div>
               <Switch>
                 <Route exact path="/information">
                   <Information></Information>
@@ -193,11 +229,13 @@ class App extends Component {
                 <Route exact path="/dashboard">
                   <Dashboard></Dashboard>
                 </Route>
+                <Route exact path="/profile">
+                  <Profile></Profile>
+                </Route>
                 <Route exact path="/">
                   <Dashboard></Dashboard>
                 </Route>
               </Switch>
-              <button onClick={() => this.testing()}>MARKOS CLICK HERE</button>
           </div>
         </Router>
 

@@ -37,7 +37,16 @@ const Uploader = () => {
                     body : JSON.stringify({ title: filePath })
                 })
                 const result = await response.text()
-                console.log(result)
+                console.log(result) 
+
+
+                const response2 = await fetch("http://localhost:3001/id", {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json' },
+                    body : JSON.stringify({ id: result })
+                })
+                const result2 = await response2.text()
+                console.log(result2)
 
             } else if (status === 'error') {
                 message.error(`${info.file.name} file upload failed.`);
