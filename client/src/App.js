@@ -7,7 +7,7 @@ import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {Button} from '@material-ui/core/';
 import logo from './covaid.png';
-
+import Profile from './Pages/Profile.js'
 
 import {
   BrowserRouter as Router,
@@ -183,6 +183,11 @@ class App extends Component {
                         Dashboard
                       </Nav.Item>
                     </Link>
+                    <Link to="/profile" style={{textDecoration : "none"}}>
+                      <Nav.Item eventKey="1" icon={<Icon icon="user" />}>
+                        Profile
+                      </Nav.Item>
+                    </Link>
                     <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
                       <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.id ? "check" : "close"}></Icon>}>Government ID</Dropdown.Item>
                       <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.health ? "check" : "close"}></Icon>}>Health</Dropdown.Item>
@@ -211,12 +216,26 @@ class App extends Component {
 
           </div>
           <div className="content-div">
+              <div className="logout">
+                <Button
+                  variant="contained"
+                  component="label"
+                  color="primary"
+                  className="logout-button"     
+                  backgroundColor="red"             
+                  >
+                    <div className="receievePayment">Logout MetaMask</div>
+                </Button>
+              </div>
               <Switch>
                 <Route exact path="/information">
                   <Information></Information>
                 </Route>
                 <Route exact path="/dashboard">
                   <Dashboard></Dashboard>
+                </Route>
+                <Route exact path="/profile">
+                  <Profile></Profile>
                 </Route>
                 <Route exact path="/">
                   <Dashboard></Dashboard>
