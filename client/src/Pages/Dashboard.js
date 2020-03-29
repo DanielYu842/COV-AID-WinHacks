@@ -67,11 +67,11 @@ class Dashboard extends React.Component{
         }
     }
 
-
     render(){
         return(
             <div className="paper" >
                 <div className="paper-title">Upload Government Issued ID</div>
+                <button></button>
                 <div className="filler-dashboardd"></div>
                 < UploadContainer id="upload-button"/>
                 {/*
