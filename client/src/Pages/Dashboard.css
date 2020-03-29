@@ -44,7 +44,7 @@
     margin: 10px;
 }
 
-.filler-dashboardd{
+.filler-dashboard{
     flex: 1;
 }
 
@@ -60,4 +60,8 @@
     cursor: pointer;
     color: #3f51b5;
 
+}
+
+.filler-dashboardd{
+    height: 25%;
 }

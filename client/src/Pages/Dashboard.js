@@ -72,6 +72,7 @@ class Dashboard extends React.Component{
         return(
             <div className="paper" >
                 <div className="paper-title">Upload Government Issued ID</div>
+                <div className="filler-dashboardd"></div>
                 < UploadContainer id="upload-button"/>
                 {/*
                 <div className="input-files">

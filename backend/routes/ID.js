@@ -82,12 +82,18 @@ function extractInfo(list) {
     return [name, cardNumber, birthday, issueDate, expiryDate];
 }
 
-// function isInteger(value) {
-//     if (parseInt(value, 10).toString() === value) {
-//         return true
-//     }
-//     return false;
-// }
+function isInteger(value) {
+    if (parseInt(value, 10).toString() === value) {
+        return true
+    }
+    return false;
+}
+
+router.get("/ocr", (req,res) => {
+    const filepath = req.body.fileName
+    res.send(returnFilenames(filepath))
+    
+})
 
 
 router.get('/status', (req, res) => {
