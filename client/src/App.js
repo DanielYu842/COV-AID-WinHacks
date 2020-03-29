@@ -94,18 +94,18 @@ class App extends Component {
     }
   };
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+  // runExample = async () => {
+  //   const { accounts, contract } = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+  //   // Stores a given value, 5 by default.
+  //   await contract.methods.set(5).send({ from: accounts[0] });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+  //   // Get the value from the contract to prove it worked.
+  //   const response = await contract.methods.get().call();
 
-    // Update state with the result.
-    this.setState({ storageValue: response });
-  };
+  //   // Update state with the result.
+  //   this.setState({ storageValue: response });
+  // };
   async testing(){
     
       // Set web3, accounts, and contract to the state, and then proceed with an
@@ -204,8 +204,10 @@ class App extends Component {
   
   var contractAbi = web3.eth.contract(abi);
   var myContract = contractAbi.at(contractAddress);
+
+  
   // suppose you want to call a function named myFunction of myContract
-  myContract.sendEther(web3.eth.accounts[0])
+  // myContract.sendEther(web3.eth.accounts[0])
   // And that is where all the magic happens
   // web3.eth.sendTransaction({
   //     to:web3.eth.accounts[0],//contracts address
@@ -254,7 +256,7 @@ class App extends Component {
               <img src={logo} alt="Smiley face" height="100" width="100"/>
               <div className="title-div">COV-AID</div>
             </div>
-            <Sidenav
+              <Sidenav
               activeKey={this.state.activeKey}
               onSelect={this.handleSelect}
               className="sideNav"
@@ -271,21 +273,16 @@ class App extends Component {
                         Profile
                       </Nav.Item>
                     </Link>
-                    <Link to="/transactions" style={{textDecoration : "none"}}>
-                      <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
-                        Transactions
-                      </Nav.Item>
-                    </Link>
+                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.id ? "check" : "close"}></Icon>}>Government ID</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.health ? "check" : "close"}></Icon>}>Health</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.employment ? "check" : "close"}></Icon>}>Employment</Dropdown.Item>
+                    </Dropdown>
                     <Link to="/information" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="book2" />}>
                         Information
                       </Nav.Item>
                     </Link>
-                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Government ID</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Health</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Employment</Dropdown.Item>
-                    </Dropdown>
 
                   </Nav>
                 </Sidenav.Body>
@@ -296,7 +293,7 @@ class App extends Component {
                     component="label"
                     color="primary"
                     className="upload-button"
-                    onClick={() => this.runExample()}
+                    onClick={() => this.testing()}
                     >
                       <div className="receievePayment">Receive Payment</div>
                 </Button>
