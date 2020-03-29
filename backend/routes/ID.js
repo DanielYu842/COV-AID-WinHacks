@@ -73,3 +73,5 @@ function isInteger(value) {
 (async () => {
     console.log(await returnFilenames('healthcard1.jpg'));
 })() //<-- returns an array of form [name, cardNumber, birthday, issueDate, expiryDate]
+
+module.exports = router;
