@@ -2,27 +2,8 @@ const express = require('express');
 const router = express.Router();
 let ID = require('../models/governmentIDs');
 
-function returnFilenames(dir) {
-    //requiring path and fs modules
-    const path = require('path');
-    const fs = require('fs');
-    //joining path of directory 
-    const directoryPath = path.join(__dirname, dir);
-    //passsing directoryPath and callback function
-    var fileList = [];
-    fs.readdir(directoryPath, function (err, files) {
-        //handling error
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
-        }
-        //listing all files using forEach
-        files.forEach(async function (file) {
-            // Do whatever you want to do with the file
-            const list = await detectTextOCR("testImages/" + file);
-            console.log(extractInfo(list));
-            //console.log(list);
-        });
-    });
+async function returnFilenames(dir) {
+    return extractInfo(await detectTextOCR(dir));
 }
 
 async function detectTextOCR(fileName) {
@@ -62,7 +43,7 @@ function extractInfo(list) {
             let trimmedDate = list[i].replace(/-/ig, "").replace(/ /ig, "");
             if (isInteger(trimmedDate)) {
                 //birthday = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
-                birthday = trimmedDate;
+                birthday = parseInt(trimmedDate, 10);
                 gotCardNo = false;
                 gotBirthday = true;
             }
@@ -71,8 +52,8 @@ function extractInfo(list) {
             if (isInteger(trimmedDate)) {
                 //issueDate = trimmedDate.substring(0, 4) + " " + trimmedDate.substring(4, 6) + " " + trimmedDate.substring(6, 8);
                 //expiryDate = trimmedDate.substring(8, 12) + " " + trimmedDate.substring(12, 14) + " " + trimmedDate.substring(14, 16);
-                issueDate = trimmedDate.substring(0, 8);
-                expiryDate = trimmedDate.substring(8, 16);
+                issueDate = parseInt(trimmedDate.substring(0, 8), 10);
+                expiryDate = parseInt(trimmedDate.substring(8, 16), 10);
                 break;
             }
         }
@@ -88,3 +69,7 @@ function isInteger(value) {
     return false;
 }
 
+
+(async () => {
+    console.log(await returnFilenames('healthcard1.jpg'));
+})() //<-- returns an array of form [name, cardNumber, birthday, issueDate, expiryDate]
