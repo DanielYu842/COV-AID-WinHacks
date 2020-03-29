@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
-
+import Web3 from 'web3';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -103,20 +103,39 @@ class App extends Component {
   //   this.setState({ storageValue: response });
   // };
   async testing(){
-      const web3 = await getWeb3();
-
-      web3.eth.sendTransaction({
-        from: "0xC63de0aA5d8d23998C4D6108F612FE7B03C910a5",
-        to: web3.eth.accounts[0], 
-        value: web3.toWei(1, "ether"), 
-    }, function(err, transactionHash) {
-        if (err) { 
-            console.log(err); 
-        } else {
-            console.log(transactionHash);
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum)
+        await window.ethereum.enable()
+      }
+      else if (window.web3) {
+        window.web3 = new Web3(window.web3.currentProvider)
+      }
+      else {
+        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      }
+    
+      /*const web3 = await getWeb3();
+      const accounts = await web3.eth.getAccounts();
+    
+      // Get the contract instance.
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = SimpleStorageContract.networks[networkId];
+      const instance = new web3.eth.Contract(
+        SimpleStorageContract.abi,
+        deployedNetwork && deployedNetwork.address,
+      );
+      var receiver = "0xC63de0aA5d8d23998C4D6108F612FE7B03C910a5";  
+      var sender = web3.eth.accounts[0];
+      web3.eth.getAccounts(function(error, accounts) {
+        if(error) {
+          console.log(error);
         }
-    });
-  }
+        
+        web3.eth.getBalance(accounts[0]).then(function(result){
+         console.log( "Balance : " ,web3.utils.fromWei(result, 'ether'));
+        });
+       });*/
+}
   render() {
     if (!this.state.web3) {
       return (
