@@ -8,8 +8,6 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {Button} from '@material-ui/core/';
 import logo from './covaid.png';
 import Profile from './Pages/Profile.js'
-import Transactions from './Pages/Transactions'
-import Tick from './tick.png'
 
 
 
@@ -110,8 +108,8 @@ class App extends Component {
   // };
   async testing(){
     
-      // // Set web3, accounts, and contract to the state, and then proceed with an
-      // // example of interacting with the contract's methods.
+      // Set web3, accounts, and contract to the state, and then proceed with an
+      // example of interacting with the contract's methods.
       // const web3 = await getWeb3();
       // const accounts = await web3.eth.getAccounts();
     
@@ -239,9 +237,9 @@ class App extends Component {
                 </path>
             </svg>
           </div>*/}
-          <div className="ocean">
-            <div className="wave"></div>
-            <div className="wave"></div>
+          <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
           </div>
  
         </div>
@@ -273,21 +271,16 @@ class App extends Component {
                         Profile
                       </Nav.Item>
                     </Link>
-                    <Link to="/transactions" style={{textDecoration : "none"}}>
-                      <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
-                        Transactions
-                      </Nav.Item>
-                    </Link>
+                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.id ? "check" : "close"}></Icon>}>Government ID</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.health ? "check" : "close"}></Icon>}>Health</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.employment ? "check" : "close"}></Icon>}>Employment</Dropdown.Item>
+                    </Dropdown>
                     <Link to="/information" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="book2" />}>
                         Information
                       </Nav.Item>
                     </Link>
-                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Government ID</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Health</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Employment</Dropdown.Item>
-                    </Dropdown>
 
                   </Nav>
                 </Sidenav.Body>
@@ -312,8 +305,9 @@ class App extends Component {
                   component="label"
                   color="primary"
                   className="logout-button"     
+                  backgroundColor="red"             
                   >
-                    <div className="receievePayment">Logout</div>
+                    <div className="receievePayment">Logout MetaMask</div>
                 </Button>
               </div>
               <Switch>
@@ -325,9 +319,6 @@ class App extends Component {
                 </Route>
                 <Route exact path="/profile">
                   <Profile></Profile>
-                </Route>
-                <Route exact path="/transactions">
-                  <Transactions></Transactions>
                 </Route>
                 <Route exact path="/">
                   <Dashboard></Dashboard>
