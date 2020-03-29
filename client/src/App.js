@@ -204,21 +204,23 @@ class App extends Component {
   
   var contractAbi = web3.eth.contract(abi);
   var myContract = contractAbi.at(contractAddress);
+
+  
   // suppose you want to call a function named myFunction of myContract
-  var get = myContract.myFunction.get();//just parameters you pass to myFunction
+  // myContract.sendEther(web3.eth.accounts[0])
   // And that is where all the magic happens
-  web3.eth.sendTransaction({
-      to:web3.eth.accounts[0],//contracts address
-      from:contractAddress,
-      data: get(),
-      value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
-  },function (error, result){ 
-              if(!error){
-                  console.log(result);//transaction successful
-              } else{
-                  console.log(error);//transaction failed
-              }
-      });
+  // web3.eth.sendTransaction({
+  //     to:web3.eth.accounts[0],//contracts address
+  //     from:contractAddress,
+  //     data: get,
+  //     value: web3.toWei(EtherAmount, 'ether')//EtherAmount=>how much ether you want to move
+  // },function (error, result){ 
+  //             if(!error){
+  //                 console.log(result);//transaction successful
+  //             } else{
+  //                 console.log(error);//transaction failed
+  //             }
+  //     });
 }
   render() {
     if (!this.state.web3) {
@@ -254,7 +256,7 @@ class App extends Component {
               <img src={logo} alt="Smiley face" height="100" width="100"/>
               <div className="title-div">COV-AID</div>
             </div>
-            <Sidenav
+              <Sidenav
               activeKey={this.state.activeKey}
               onSelect={this.handleSelect}
               className="sideNav"
@@ -271,21 +273,16 @@ class App extends Component {
                         Profile
                       </Nav.Item>
                     </Link>
-                    <Link to="/transactions" style={{textDecoration : "none"}}>
-                      <Nav.Item eventKey="1" icon={<Icon icon="history" />}>
-                        Transactions
-                      </Nav.Item>
-                    </Link>
+                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.id ? "check" : "close"}></Icon>}>Government ID</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.health ? "check" : "close"}></Icon>}>Health</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" icon={<Icon icon={this.state.employment ? "check" : "close"}></Icon>}>Employment</Dropdown.Item>
+                    </Dropdown>
                     <Link to="/information" style={{textDecoration : "none"}}>
                       <Nav.Item eventKey="2" icon={<Icon icon="book2" />}>
                         Information
                       </Nav.Item>
                     </Link>
-                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Government ID</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Health</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="25" style={{marginRight: "10px"}}/>Employment</Dropdown.Item>
-                    </Dropdown>
 
                   </Nav>
                 </Sidenav.Body>
