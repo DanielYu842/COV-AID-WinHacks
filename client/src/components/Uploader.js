@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Upload, message } from 'antd';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import {Button} from '@material-ui/core/';
+
 const { Dragger } = Upload;
 
 const Container = styled.div`
@@ -22,6 +25,7 @@ const Uploader = () => {
 
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
+                console.log(info)
             } else if (status === 'error') {
                 message.error(`${info.file.name} file upload failed.`);
             }
@@ -31,9 +35,14 @@ const Uploader = () => {
     return (
         <Container>
             <Dragger {...props}>
-                <div style={{width: '100%'}}>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                </div>
+            <Button
+                    variant="contained"
+                    component="label"
+                    color="primary"
+                    className="upload-button"
+                    >
+                        <CloudUploadIcon></CloudUploadIcon> <div className="file-upload-text">Upload File</div>
+                    </Button>
             </Dragger>
         </Container>
     )
