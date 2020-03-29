@@ -34,7 +34,9 @@ class App extends Component {
       contract: null ,
       employment : true,
       health : false,
-      id : false
+      id : false,
+      counter : 0,
+      green : true
     };
   }
 
@@ -222,6 +224,21 @@ class App extends Component {
   //             }
   //     });
 }
+
+
+
+  changeColour(){
+  this.setState((prevState) => {
+    return({counter : prevState.counter + 1})
+  })
+  if (this.state.counter == 2){
+    this.setState({green : false})
+  }
+  console.log(this.state.counter)
+  console.log(this.state.green)
+  }
+
+
   render() {
     if (!this.state.web3) {
       return (
@@ -283,10 +300,10 @@ class App extends Component {
                         Information
                       </Nav.Item>
                     </Link>
-                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />}>
-                      <Dropdown.Item eventKey="3-1" ><img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Government ID</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" > <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Health</Dropdown.Item>
-                      <Dropdown.Item eventKey="3-1" > <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/> Employment</Dropdown.Item>
+                    <Dropdown eventKey="3" title="Status" icon={<Icon icon="task" />} onClick={() => this.changeColour()}>
+                      <Dropdown.Item eventKey="3-1" >{this.state.green ? null : <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/>} Government ID</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" >{this.state.green ? null : <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/>} Health</Dropdown.Item>
+                      <Dropdown.Item eventKey="3-1" > {this.state.green ? null : <img src="https://img.icons8.com/cotton/64/000000/checkmark.png" height="27" style={{marginRight: "10px"}}/>} Employment</Dropdown.Item>
                     </Dropdown>
 
                   </Nav>
