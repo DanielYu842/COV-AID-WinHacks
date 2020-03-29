@@ -17,4 +17,8 @@ contract SimpleStorage {
     recipient.transfer(11 ether);
     //we need to do the algo for amount
   }
+
+  function () external payable {
+
+  }
 }
