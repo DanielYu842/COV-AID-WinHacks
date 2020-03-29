@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-let ID = require('../models/ID');
+
+let ID = require('../models/governmentIDs');
 
 function returnFilenames(dir) {
     //requiring path and fs modules
@@ -108,3 +109,5 @@ router.get('/', (req, res) => {
         .then(IDs => res.send(IDs))
         .catch(err => res.status(500).send(err));
 });     
+
+module.exports = router;
