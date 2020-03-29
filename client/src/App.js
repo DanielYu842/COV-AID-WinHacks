@@ -6,6 +6,8 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import { Sidenav , Nav, Icon, Dropdown} from 'rsuite';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {Button} from '@material-ui/core/';
+import logo from './covaid.png';
+
 
 import {
   BrowserRouter as Router,
@@ -167,7 +169,7 @@ class App extends Component {
         <Router>          
           <div className="sideNav-div">
             <div className="logo-div">
-              <img src="client\src\covaid.png" alt="Smiley face" height="42" width="42"/>
+              <img src={logo} alt="Smiley face" height="100" width="100"/>
             </div>
               <Sidenav
               activeKey={this.state.activeKey}
