@@ -1,5 +1,5 @@
 pragma solidity 0.5.16;
-//pragma solidity >=0.4.21 <0.7.0; this is the defualt
+//pragma solidity >=0.4.21 <0.7.0; this is the default
 
 contract SimpleStorage {
   uint storedData;
