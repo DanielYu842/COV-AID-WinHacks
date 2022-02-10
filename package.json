@@ -20,7 +20,7 @@
     "mongodb-uri": "^0.9.7",
     "mongoose": "^5.9.6",
     "morgan": "~1.9.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "schema": "^0.2.1",
     "truffle": "^5.1.19",
     "uri-utils": "^1.0.4",
